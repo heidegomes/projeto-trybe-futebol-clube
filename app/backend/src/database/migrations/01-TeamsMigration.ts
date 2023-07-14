@@ -10,7 +10,8 @@ export default {
         autoIncrement: true,
         primaryKey: true,
       },
-      team_name: {
+      teamName: {
+        field: "team_name",
         type: DataTypes.STRING
       },
     });
