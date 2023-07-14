@@ -7,7 +7,7 @@ import chaiHttp = require('chai-http');
 import { App } from '../app';
 
 
-import { teams } from './mocks/Teams.mock';
+import { teams, teamId } from './mocks/Teams.mock';
 import TeamsModel from '../database/models/TeamsModel';
 
 chai.use(chaiHttp);
@@ -25,5 +25,15 @@ describe('Teams Test', function () {
     expect(status).to.equal(200);
     expect(body).to.deep.equal(teams);
   });
+
+  it('should return a team by id', async function () {
+    sinon.stub(TeamsModel, 'findOne').resolves(teamId as any);
+
+    const { status, body } = await chai.request(app).get('/teams/1');
+
+    expect(status).to.equal(200);
+    expect(body).to.deep.equal(teamId);
+  });
+
   afterEach(sinon.restore);
 });

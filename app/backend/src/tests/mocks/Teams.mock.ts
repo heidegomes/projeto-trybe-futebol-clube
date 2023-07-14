@@ -13,6 +13,12 @@ const teams = [
   },
 ];
 
+const teamId = {
+  "id": 5,
+  "teamName": "Cruzeiro"
+}
+
 export {
-  teams
+  teams,
+  teamId
 };
