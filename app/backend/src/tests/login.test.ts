@@ -8,7 +8,7 @@ const chaiHttp = require('chai-http');
 import { describe } from 'mocha';
 import { App } from '../app';
 import UsersModel from '../database/models/UsersModel';
-import { loginValidData, loginWithoutEmail, loginWithoutPassword, userMock } from './mocks/Users.mock';
+import { loginInvalidEmail, loginInvalidPassword, loginValidData, loginWithoutEmail, loginWithoutPassword, userMock } from './mocks/Users.mock';
 
 
 chai.use(chaiHttp);
@@ -56,6 +56,26 @@ describe('Test Login', function () {
       expect(response).to.have.status(400);
       expect(response.body).to.deep.equal({
         message: 'All fields must be filled'
+      })
+    })
+    it('não pode fazer login se o formato do email for inválido', async function () {
+
+      const response = await chai.request(app)
+        .post(prefix)
+        .send(loginInvalidEmail)
+      expect(response).to.have.status(401);
+      expect(response.body).to.deep.equal({
+        message: 'Invalid email or password'
+      })
+    })
+    it('não pode fazer login se o formato da senha for inválido', async function () {
+
+      const response = await chai.request(app)
+        .post(prefix)
+        .send(loginInvalidPassword)
+      expect(response).to.have.status(401);
+      expect(response.body).to.deep.equal({
+        message: 'Invalid email or password'
       })
     })
   })

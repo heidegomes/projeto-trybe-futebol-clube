@@ -7,15 +7,20 @@ const userMock = {
 }
 
 const loginValidData = {
-  email: 'rafatedesco@gmail.com',
-  password: 'valid-password'
+  email: 'user@user.com',
+  password: 'hashed-valid-password'
 }
 
 const loginWithoutEmail = {
-  password: 'valid-password'
+  password: 'hashed-valid-password'
 }
 
 const loginWithoutPassword = {
   email: 'valid@email.com',
 }
-export { userMock, loginValidData, loginWithoutEmail, loginWithoutPassword }
+
+const loginInvalidEmail = {
+  email: '@exemplo.com' || 'exemplo@exemplo' || 'exemplo@.com' || 'exemplo.exemplo.com',
+  password: 'hashed-valid-password'
+}
+export { userMock, loginValidData, loginWithoutEmail, loginWithoutPassword, loginInvalidEmail }
