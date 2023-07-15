@@ -1,6 +1,6 @@
 import * as chai from 'chai';
 import * as sinon from 'sinon';
-import * as bcrypt from 'bcrypt';
+import * as bcryptjs from 'bcryptjs';
 
 // @ts-ignore
 const chaiHttp = require('chai-http');
@@ -26,7 +26,7 @@ describe('Test Login', function () {
 
   describe('Successful login', function () {
     it('should login with valid credentials', async function () {
-      sinon.stub(bcrypt, 'compareSync').returns(true);
+      sinon.stub(bcryptjs, 'compareSync').returns(true);
 
       sinon.stub(UsersModel, 'findOne').resolves(userMock as UsersModel);
 
