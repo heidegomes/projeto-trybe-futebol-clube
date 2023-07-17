@@ -1,5 +1,5 @@
-import * as chai from 'chai';
 import * as sinon from 'sinon';
+import * as chai from 'chai';
 import * as bcryptjs from 'bcryptjs';
 
 // @ts-ignore

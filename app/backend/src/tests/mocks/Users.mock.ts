@@ -23,4 +23,11 @@ const loginInvalidEmail = {
   email: '@exemplo.com' || 'exemplo@exemplo' || 'exemplo@.com' || 'exemplo.exemplo.com',
   password: 'hashed-valid-password'
 }
-export { userMock, loginValidData, loginWithoutEmail, loginWithoutPassword, loginInvalidEmail }
+
+const loginInvalidPassword = {
+  email: 'user@user.com',
+  password: 'pass'
+}
+
+
+export { userMock, loginValidData, loginWithoutEmail, loginWithoutPassword, loginInvalidEmail, loginInvalidPassword }

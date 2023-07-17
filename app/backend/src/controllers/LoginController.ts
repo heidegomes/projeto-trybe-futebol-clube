@@ -13,21 +13,22 @@ export default class LoginController {
 
   public async login(req: Request, res: Response) {
     const { email, password } = req.body as ILogin;
-    const user = await this.usersService.findByEmail(email);
 
-    if (!user) {
+    const userLogin = await this.usersService.findByEmail(email);
+
+    if (!userLogin) {
       return res.status(401).json({
         message: 'Invalid email or password',
       });
     }
 
-    if (!bcryptjs.compareSync(password, user.password)) {
+    if (!bcryptjs.compareSync(password, userLogin.password)) {
       return res.status(401).json({
         message: 'Invalid email or password',
       });
     }
 
-    const token = this.jwtUtils.sign({ id: user.id });
+    const token = this.jwtUtils.sign({ id: userLogin.id });
 
     return res.status(200).json({
       token,
