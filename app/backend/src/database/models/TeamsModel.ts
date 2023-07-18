@@ -33,6 +33,10 @@ TeamsModel.init({
   underscored: true,
 });
 
+// TeamsModel.hasMany(MatchesModel, { foreignKey: 'teamId', as: 'homeTeamId' });
+// TeamsModel.hasMany(MatchesModel, { foreignKey: 'teamId', as: 'awayTeamId' });
+
+export default TeamsModel;
 /**
   * `Workaround` para aplicar as associations em TS:
   * Associations 1:N devem ficar em uma das instâncias de modelo
@@ -40,8 +44,3 @@ TeamsModel.init({
 
 // OtherModel.belongsTo(Example, { foreignKey: 'campoA', as: 'campoEstrangeiroA' });
 // OtherModel.belongsTo(Example, { foreignKey: 'campoB', as: 'campoEstrangeiroB' });
-
-// Example.hasMany(OtherModel, { foreignKey: 'campoC', as: 'campoEstrangeiroC' });
-// Example.hasMany(OtherModel, { foreignKey: 'campoD', as: 'campoEstrangeiroD' });
-
-export default TeamsModel;
