@@ -3,7 +3,7 @@ import * as chai from 'chai';
 import * as bcryptjs from 'bcryptjs';
 
 // @ts-ignore
-const chaiHttp = require('chai-http');
+import chaiHttp = require('chai-http');
 
 import { describe } from 'mocha';
 import { App } from '../app';

@@ -1,8 +1,8 @@
 const userMock = {
   id: 1,
-  username: 'User',
-  role: 'user',
-  email: 'user@user.com',
+  username: 'Admin',
+  role: 'admin',
+  email: 'admin@admin.com',
   password: 'hashed-valid-password',
 }
 
