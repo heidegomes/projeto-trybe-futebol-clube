@@ -27,7 +27,7 @@ describe('Matches Test', function () {
   });
 
   it('should only return matches in progress', async function () {
-    sinon.stub(MatchesModel, 'findInProgress').resolves(matchesInProgress as any);
+    sinon.stub(MatchesModel, 'findAll').resolves(matchesInProgress as any);
 
     const { status, body } = await chai.request(app).get('/matches');
 
@@ -36,7 +36,7 @@ describe('Matches Test', function () {
   });
 
   it('should return only finished matches', async function () {
-    sinon.stub(MatchesModel, 'findFinished').resolves(matchesFinished as any);
+    sinon.stub(MatchesModel, 'findAll').resolves(matchesFinished as any);
 
     const { status, body } = await chai.request(app).get('/matches');
 
