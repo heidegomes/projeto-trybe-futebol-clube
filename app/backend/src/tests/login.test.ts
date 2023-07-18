@@ -38,7 +38,7 @@ describe('Test Login', function () {
     })
   })
   describe('failure', function () {
-    it('não pode fazer login se o email não for informado', async function () {
+    it('cannot log in if an email is not provided', async function () {
 
       const response = await chai.request(app)
         .post(prefix)
@@ -48,7 +48,7 @@ describe('Test Login', function () {
         message: 'All fields must be filled'
       })
     })
-    it('não pode fazer login se o password não for informado', async function () {
+    it('cannot log in if a password is not provided', async function () {
 
       const response = await chai.request(app)
         .post(prefix)
@@ -58,7 +58,7 @@ describe('Test Login', function () {
         message: 'All fields must be filled'
       })
     })
-    it('não pode fazer login se o formato do email for inválido', async function () {
+    it('cannot login if email format is invalid', async function () {
 
       const response = await chai.request(app)
         .post(prefix)
@@ -68,7 +68,7 @@ describe('Test Login', function () {
         message: 'Invalid email or password'
       })
     })
-    it('não pode fazer login se o formato da senha for inválido', async function () {
+    it('cannot login if password format is invalid', async function () {
 
       const response = await chai.request(app)
         .post(prefix)
