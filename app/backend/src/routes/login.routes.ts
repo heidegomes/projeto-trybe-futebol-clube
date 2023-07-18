@@ -2,10 +2,10 @@ import { Request, Router, Response } from 'express';
 import LoginController from '../controllers/LoginController';
 import LoginValidate from '../middlewares/LoginValidate';
 import TokenValidate from '../middlewares/Tokenvalidate';
-import RoleController from '../controllers/RoleController';
+import AuthController from '../controllers/AuthController';
 
 const loginController = new LoginController();
-const roleController = new RoleController();
+const authController = new AuthController();
 
 const loginRouter = Router();
 
@@ -17,7 +17,7 @@ loginRouter.post(
 loginRouter.get(
   '/role',
   TokenValidate.validateToken,
-  (req: Request, res: Response) => roleController.loginToken(req, res),
+  (req: Request, res: Response) => authController.loginToken(req, res),
 );
 
 export default loginRouter;

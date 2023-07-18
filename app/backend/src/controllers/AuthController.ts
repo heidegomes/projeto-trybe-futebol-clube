@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import UsersService from '../services/UsersService';
 
-export default class RoleController {
+export default class AuthController {
   constructor(
     private usersService = new UsersService(),
   ) { }
