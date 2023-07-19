@@ -1,17 +1,14 @@
 import TeamsModel from '../database/models/TeamsModel';
-import { Match } from '../types/Matches';
 import MatchesModel from '../database/models/MatchesModel';
-import { ServiceResponse } from '../Interfaces/ServiceResponse';
 
 export default class MatchesService {
   constructor(
     private matchesModel = MatchesModel,
   ) { }
 
-  public async getAllMatches(): Promise<ServiceResponse<Match[]>> {
+  public async getAllMatches(): Promise<MatchesModel[]> {
     const allMatches = await this.matchesModel.findAll({
       include: [
-
         {
           model: TeamsModel,
           as: 'homeTeam',
@@ -24,12 +21,44 @@ export default class MatchesService {
         },
       ],
     });
-    return { status: 'SUCCESSFUL', data: allMatches as any };
+    return allMatches;
   }
 
-  // public async getTeamById(id: number): Promise<ServiceResponse<Team>> {
-  //   const team = await this.teamsModel.findByPk(id);
-  //   if (!team) return { status: 'NOT_FOUND', data: { message: `Team ${id} not found` } };
-  //   return { status: 'SUCCESSFUL', data: team };
-  // }
+  public async getInProgress(): Promise<MatchesModel[]> {
+    const inProgress = await this.matchesModel.findAll({
+      where: { inProgress: true },
+      include: [
+        {
+          model: TeamsModel,
+          as: 'homeTeam',
+          attributes: ['teamName'],
+        },
+        {
+          model: TeamsModel,
+          as: 'awayTeam',
+          attributes: ['teamName'],
+        },
+      ],
+    });
+    return inProgress;
+  }
+
+  public async getNotInProgress(): Promise<MatchesModel[]> {
+    const inProgress = await this.matchesModel.findAll({
+      where: { inProgress: false },
+      include: [
+        {
+          model: TeamsModel,
+          as: 'homeTeam',
+          attributes: ['teamName'],
+        },
+        {
+          model: TeamsModel,
+          as: 'awayTeam',
+          attributes: ['teamName'],
+        },
+      ],
+    });
+    return inProgress;
+  }
 }

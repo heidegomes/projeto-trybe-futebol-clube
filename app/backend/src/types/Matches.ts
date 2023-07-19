@@ -10,5 +10,6 @@ export type Match = {
   },
   awayTeam: {
     teamName: string,
-  }
+  },
+  message?: string,
 };
