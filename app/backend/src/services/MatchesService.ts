@@ -1,3 +1,4 @@
+// import IMatches from '../Interfaces/IMatches';
 import TeamsModel from '../database/models/TeamsModel';
 import MatchesModel from '../database/models/MatchesModel';
 
@@ -61,4 +62,22 @@ export default class MatchesService {
     });
     return inProgress;
   }
+
+  public async getMatchById(id: number): Promise<MatchesModel | null> {
+    const match = await this.matchesModel.findByPk(id);
+    // if (!match) return { status: 'NOT_FOUND', data: { message: `Match ${id} not found` } };
+    return match;
+  }
+
+  public async matchFinished(id: number): Promise<void> {
+    await this.matchesModel.update({ inProgress: false }, { where: { id } });
+  }
+
+  // public async updateMatch(id: number): Promise<void> {
+  //   await this.matchesModel.update(
+  //     { homeTeamGoals, awayTeamGoals },
+  //     { where: { id } },
+  //   );
+  // return matchFinish;
+  // }
 }

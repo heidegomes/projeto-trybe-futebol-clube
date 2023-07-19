@@ -41,7 +41,6 @@ export default {
         allowNull: false,
         field: 'in_progress'
       },
-
     });
   },
   down(queryInterface: QueryInterface) {

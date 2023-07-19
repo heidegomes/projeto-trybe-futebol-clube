@@ -16,7 +16,7 @@ InferCreationAttributes<MatchesModel>> {
   declare homeTeamGoals: CreationOptional<number>;
   declare awayTeamId: CreationOptional<number>;
   declare awayTeamGoals: CreationOptional<number>;
-  declare inProgress: CreationOptional<number>;
+  declare inProgress: CreationOptional<boolean>;
 }
 
 MatchesModel.init({
