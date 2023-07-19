@@ -6,9 +6,8 @@ import chaiHttp = require('chai-http');
 
 import { App } from '../app';
 
-
-import { teams, teamId } from './mocks/Teams.mock';
 import MatchesModel from '../database/models/MatchesModel';
+import { matches, matchesFinished, matchesInProgress, resultUpdated } from './mocks/Matches.mock';
 
 chai.use(chaiHttp);
 
@@ -23,13 +22,13 @@ describe('Matches Test', function () {
     const { status, body } = await chai.request(app).get('/matches');
 
     expect(status).to.equal(200);
-    expect(body).to.deep.equal(teams);
+    expect(body).to.deep.equal(matches);
   });
 
   it('should only return matches in progress', async function () {
     sinon.stub(MatchesModel, 'findAll').resolves(matchesInProgress as any);
 
-    const { status, body } = await chai.request(app).get('/matches');
+    const { status, body } = await chai.request(app).get('/matches?inProgress=true');
 
     expect(status).to.equal(200);
     expect(body).to.deep.equal(matchesInProgress);
@@ -38,7 +37,7 @@ describe('Matches Test', function () {
   it('should return only finished matches', async function () {
     sinon.stub(MatchesModel, 'findAll').resolves(matchesFinished as any);
 
-    const { status, body } = await chai.request(app).get('/matches');
+    const { status, body } = await chai.request(app).get('/matches?inProgress=false');
 
     expect(status).to.equal(200);
     expect(body).to.deep.equal(matchesFinished);
