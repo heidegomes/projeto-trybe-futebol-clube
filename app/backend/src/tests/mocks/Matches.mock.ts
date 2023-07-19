@@ -91,14 +91,63 @@ const matchesFinished = [
   }
 ]
 
+const match41 = {
+  "id": 41,
+  "homeTeamId": 16,
+  "homeTeamGoals": 2,
+  "awayTeamId": 9,
+  "awayTeamGoals": 0,
+  "inProgress": true,
+  "homeTeam": {
+    "teamName": "São Paulo"
+  },
+  "awayTeam": {
+    "teamName": "Internacional"
+  }
+}
+
 const resultUpdated = {
   "homeTeamGoals": 3,
   "awayTeamGoals": 1
 }
 
+const reqNewMatch = {
+  "homeTeamId": 16, // O valor deve ser o id do time
+  "awayTeamId": 8, // O valor deve ser o id do time
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+}
+
+const resNewMatch = {
+  "id": 1,
+  "homeTeamId": 16,
+  "homeTeamGoals": 2,
+  "awayTeamId": 8,
+  "awayTeamGoals": 2,
+  "inProgress": true,
+}
+
+const twoSameTeams = {
+  "homeTeamId": 16, // O valor deve ser o id do time
+  "awayTeamId": 16, // O valor deve ser o id do time
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+}
+
+const nonExistentTeam = {
+  "homeTeamId": 160, // O valor deve ser o id do time
+  "awayTeamId": 80, // O valor deve ser o id do time
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2,
+}
 export {
   matches,
   matchesInProgress,
   matchesFinished,
-  resultUpdated
+  resultUpdated,
+  match41,
+  reqNewMatch,
+  resNewMatch,
+  twoSameTeams,
+  nonExistentTeam
 };

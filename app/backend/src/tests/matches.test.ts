@@ -7,7 +7,7 @@ import chaiHttp = require('chai-http');
 import { App } from '../app';
 
 import MatchesModel from '../database/models/MatchesModel';
-import { matches, matchesFinished, matchesInProgress, resultUpdated } from './mocks/Matches.mock';
+import { SameTeams, match41, matches, matchesFinished, matchesInProgress, nonExistentTeam, reqNewMatch, resNewMatch, resultUpdated, twoSameTeams } from './mocks/Matches.mock';
 
 chai.use(chaiHttp);
 
@@ -44,10 +44,10 @@ describe('Matches Test', function () {
   });
 
   it('should be possible to finish a match', async function () {
-    // sinon.stub(MatchesModel, 'findFinished').resolves(matchesFinished as any);
+    sinon.stub(MatchesModel, 'update').resolves(match41 as any);
 
     const response = await chai.request(app)
-      .patch('/matches/:id/finish');
+      .patch('/matches/41/finish');
 
     expect(response).to.have.status(200);
     expect(response.body).to.deep.equal({
@@ -56,7 +56,7 @@ describe('Matches Test', function () {
   });
 
   it('should be possible to update the result of a match', async function () {
-    // sinon.stub(MatchesModel, 'findFinished').resolves(matchesFinished as any);
+    sinon.stub(MatchesModel, 'update').resolves(match41 as any);
 
     const response = await chai.request(app)
       .patch('/matches/:id')
@@ -64,6 +64,43 @@ describe('Matches Test', function () {
 
     expect(response).to.have.status(200);
     expect(response.body).to.deep.equal(resultUpdated)
+  });
+
+  it('should be possible to create a new match', async function () {
+    sinon.stub(MatchesModel, 'create').resolves();
+
+    const response = await chai.request(app)
+      .post('/matches')
+      .send(reqNewMatch)
+
+    expect(response).to.have.status(200);
+    expect(response.body).to.deep.equal(resNewMatch)
+  });
+
+  it('should not be possible to create a new match with two same team', async function () {
+    sinon.stub(MatchesModel, 'create').resolves();
+
+    const response = await chai.request(app)
+      .post('/matches')
+      .send(twoSameTeams)
+
+    expect(response).to.have.status(422);
+    expect(response.body).to.deep.equal({
+      message: "It is not possible to create a match with two equal teams"
+    })
+  });
+
+  it('should not be possible to create a new match with the non-existent team', async function () {
+    sinon.stub(MatchesModel, 'create').resolves();
+
+    const response = await chai.request(app)
+      .post('/matches')
+      .send(nonExistentTeam)
+
+    expect(response).to.have.status(422);
+    expect(response.body).to.deep.equal({
+      message: "There is no team with such id!"
+    })
   });
 
   afterEach(sinon.restore);
