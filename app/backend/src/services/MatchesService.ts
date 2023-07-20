@@ -90,6 +90,7 @@ export default class MatchesService {
     const createMatch = await this.matchesModel.create(
       { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals, inProgress: true },
     );
+    console.log('####', createMatch);
     return createMatch;
   }
 }

@@ -119,12 +119,12 @@ const reqNewMatch = {
 }
 
 const resNewMatch = {
-  "id": 1,
+  "id": 50,
   "homeTeamId": 16,
-  "homeTeamGoals": 2,
   "awayTeamId": 8,
+  "homeTeamGoals": 2,
   "awayTeamGoals": 2,
-  "inProgress": true,
+  "inProgress": true
 }
 
 const twoSameTeams = {
@@ -133,6 +133,10 @@ const twoSameTeams = {
   "homeTeamGoals": 2,
   "awayTeamGoals": 2,
 }
+
+const teamsModelById = {
+  status: 'NOT_FOUND', data: { message: 'Team 160 not found' }
+};
 
 const nonExistentTeam = {
   "homeTeamId": 160, // O valor deve ser o id do time
@@ -149,5 +153,6 @@ export {
   reqNewMatch,
   resNewMatch,
   twoSameTeams,
-  nonExistentTeam
+  nonExistentTeam,
+  teamsModelById
 };
