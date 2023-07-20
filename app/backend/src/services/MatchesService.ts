@@ -1,4 +1,5 @@
 // import IMatches from '../Interfaces/IMatches';
+import IMatches from '../Interfaces/IMatches';
 import TeamsModel from '../database/models/TeamsModel';
 import MatchesModel from '../database/models/MatchesModel';
 
@@ -78,5 +79,17 @@ export default class MatchesService {
       { homeTeamGoals, awayTeamGoals },
       { where: { id } },
     );
+  }
+
+  public async createMatch(
+    homeTeamId:number,
+    awayTeamId:number,
+    homeTeamGoals:number,
+    awayTeamGoals:number,
+  ): Promise<IMatches> {
+    const createMatch = await this.matchesModel.create(
+      { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals, inProgress: true },
+    );
+    return createMatch;
   }
 }

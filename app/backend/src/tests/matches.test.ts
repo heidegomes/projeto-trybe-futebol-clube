@@ -7,7 +7,7 @@ import chaiHttp = require('chai-http');
 import { App } from '../app';
 
 import MatchesModel from '../database/models/MatchesModel';
-import { SameTeams, match41, matches, matchesFinished, matchesInProgress, nonExistentTeam, reqNewMatch, resNewMatch, resultUpdated, twoSameTeams } from './mocks/Matches.mock';
+import { match41, matches, matchesFinished, matchesInProgress, nonExistentTeam, reqNewMatch, resNewMatch, resultUpdated, twoSameTeams } from './mocks/Matches.mock';
 
 chai.use(chaiHttp);
 
