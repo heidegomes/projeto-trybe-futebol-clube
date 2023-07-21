@@ -66,7 +66,7 @@ export default class MatchesService {
 
   public async getMatchById(id: number): Promise<MatchesModel | null> {
     const match = await this.matchesModel.findByPk(id);
-    // if (!match) return { status: 'NOT_FOUND', data: { message: `Match ${id} not found` } };
+
     return match;
   }
 
@@ -90,7 +90,6 @@ export default class MatchesService {
     const createMatch = await this.matchesModel.create(
       { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals, inProgress: true },
     );
-    console.log('####', createMatch);
     return createMatch;
   }
 }
