@@ -13,5 +13,13 @@ leaderboardRouter.get(
   '/away',
   (req: Request, res: Response) => leaderboardController.getTeamsAway(req, res),
 );
+leaderboardRouter.get(
+  '/home',
+  (req: Request, res: Response) => leaderboardController.getTeamsHome(req, res),
+);
+leaderboardRouter.get(
+  '/',
+  (req: Request, res: Response) => leaderboardController.getTeams(req, res),
+);
 
 export default leaderboardRouter;
