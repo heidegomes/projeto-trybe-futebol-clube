@@ -6,8 +6,13 @@ export default class LeaderboardController {
     private leaderboardService = LeaderboardService,
   ) { }
 
-  public async getAllTeams(_req: Request, res: Response) {
-    const serviceResponse = await this.leaderboardService.getAllMatches();
+  public async getTeamsHome(_req: Request, res: Response) {
+    const serviceResponse = await this.leaderboardService.getTeamsHome();
+    res.status(200).json(serviceResponse);
+  }
+
+  public async getTeamsAway(_req: Request, res: Response) {
+    const serviceResponse = await this.leaderboardService.getTeamsAway();
     res.status(200).json(serviceResponse);
   }
 }
