@@ -3,7 +3,7 @@ import LeaderboardService from '../services/LeaderboardService';
 
 export default class LeaderboardController {
   constructor(
-    private leaderboardService = new LeaderboardService(),
+    private leaderboardService = LeaderboardService,
   ) { }
 
   public async getAllTeams(_req: Request, res: Response) {
