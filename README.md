@@ -2,7 +2,7 @@
 
 ## Contexto
 
-> Neste projeto foi criada uma API e um banco de dados para um site informativo sobre partidas e classificações de futebol. A aplicação permite fazer o CRUD (Create, Read, Updated e Delete) completo. Criar uma partida, listas os times, listar partidas finalizadas e partidas em andamento, atualizar o palcar de uma partida e finalizá-la. Também é possivel trazer o placar geral ou filtrado por times da casa ou times visitantes. 
+> Neste projeto foi criada uma API e um banco de dados para um site informativo sobre partidas e classificações de futebol. A aplicação permite fazer o CRUD (Create, Read, Updated e Delete) completo. Criar uma partida, listas os times, listar partidas finalizadas e partidas em andamento, atualizar o placar de uma partida e finalizá-la. Também é possivel trazer o placar geral ou filtrado por times da casa ou times visitantes. 
 
 ## Tecnologias usadas
 
@@ -11,6 +11,7 @@
 - Express;
 - MySQL;
 - Sequelize;
+- Docker;
 - JWT;
 
 ## 🐋 Instalação do projeto Rodando no Docker
